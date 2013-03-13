@@ -50,7 +50,7 @@ Notes
 Safari, Chrome, and Firefox will report that they have webkit|gecko engines
 
 ``` js
-if (owser.webkit) {
+if (owser.browser.webkit) {
   // do stuff with safari & chrome
 }
 ```
@@ -68,7 +68,7 @@ then add Owser to your module collection
 use it like this:
 
 ``` js
-if ($.browser.chrome) {
+if ($.owser.browser.chrome) {
   alert('Hello Silicon Valley');
 }
 ```
@@ -80,12 +80,12 @@ Graded Browser Support
 One useful feature of Owser is that aside from checking one browser from another -- it will keep up to date with [Yahoo's Graded Browser Support](http://developer.yahoo.com/yui/articles/gbs/) chart, giving you access to each grade on the Owser object
 
 ``` js
-if (owser.a) {
+if (owser.browser.a) {
   // support full feature set
 }
-else if (owser.c) {
+else if (owser.browser.c) {
   // serve degraded version
 }
 else {
-  // unsupported (owser.x)
+  // unsupported (owser..browser.x)
 }
