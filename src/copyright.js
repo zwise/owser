@@ -1,5 +1,6 @@
 /*!
-  * Bowser - a browser detector
-  * https://github.com/ded/bowser
-  * MIT License | (c) Dustin Diaz 2011
+  * Owser - a device detector for operating systems and browsers
+  * Derived from Dustin Diaz's [Bowser](https://github.com/ded/bowser)
+  * https://github.com/zwise/owser
+  * MIT License | (c) Zach Wise 2013
   */
