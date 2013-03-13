@@ -1,9 +1,9 @@
 require('smoosh').config({
   "JAVASCRIPT": {
     "DIST_DIR": "./"
-  , "bowser": [
+  , "owser": [
         "./src/copyright.js"
-      , "./src/bowser.js"
+      , "./src/owser.js"
     ]
   }
   , "JSHINT_OPTS": {
