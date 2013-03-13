@@ -29,6 +29,7 @@ if (owser.browser.chrome) {
 Or, just find out what browser you're on:
 ```
 alert(owser.browser.name);
+```
 
 
 Detected Operating Systems
