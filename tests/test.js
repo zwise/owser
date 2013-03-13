@@ -2,9 +2,9 @@ window.onload = function () {
 
 	var ua = document.getElementById("ua"),
 		os = document.getElementById("os"),
-		oversion = document.getElementById("overs")
-		browser = document.getElementById("browser")
-		bversion = document.getElementById("bvers")
+		oversion = document.getElementById("overs"),
+		browser = document.getElementById("browser"),
+		bversion = document.getElementById("bvers");
 
 	ua.innerHTML = ua.innerHTML + owser.ua;
 	os.innerHTML = os.innerHTML + owser.os.name;
