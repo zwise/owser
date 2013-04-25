@@ -2,7 +2,7 @@
     "name": "owser"
   , "description": "an operating system detector"
   , "keywords": ["operating system", "sniff", "detection", "user-agent"]
-  , "version": "0.0.1"
+  , "version": "0.0.2"
   , "homepage": "https://github.com/zwise/owser"
   , "author": "Zach Wise <zach.j.wise@gmail.com> (https://github.com/zwise/)"
   , "main": "./owser.js"
