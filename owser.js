@@ -21,6 +21,8 @@
 		* Android: "Mozilla/5.0 (Linux; U; Android 2.3.4; en-us; T-Mobile G2 Build/GRJ22) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1"
 		* Touchpad: "Mozilla/5.0 (hp-tabled;Linux;hpwOS/3.0.5; U; en-US)) AppleWebKit/534.6 (KHTML, like Gecko) wOSBrowser/234.83 Safari/534.6 TouchPad/1.0"
 		* PhantomJS: "Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.5.0 Safari/534.34"
+		* Firefox OS: "Mozilla/5.0 (Mobile; rv:18.0) Gecko/18.0 Firefox/18.0"
+		* Windows Phone: "Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 920)"
 		*/
 
 	var ua = navigator.userAgent,
@@ -34,10 +36,12 @@
 		iphone = /iphone/i.test(ua),
 		ipad = /ipad/i.test(ua),
 		ipod = /ipad/i.test(ua),
+		winphone = /windows phone/i.test(ua),
 		touchpad = /touchpad/i.test(ua),
 		android = /android/i.test(ua),
 		opera = /opera/i.test(ua),
 		firefox = /firefox/i.test(ua),
+		firefoxos =  /mobile\; rv/i.test(ua) && firefox,
 		gecko = /gecko\//i.test(ua),
 		seamonkey = /seamonkey\//i.test(ua),
 		webkitVersion = /version\/(\d+(\.\d+)?)/i,
@@ -125,6 +129,13 @@
 
 	function detectOS() {
 
+		if (winphone) return {
+			winphone: t,
+			mobile: t,
+			name: "winphone",
+			version: ua.match(/windows phone (\d+\.\d+)?/i)[1]
+		};
+
 		if (windows) {
 			o = {
 				windows: t,
@@ -163,6 +174,13 @@
 			mobile: t,
 			name: 'android',
 			version: ua.match(/android (\d+\.\d+?)/i)[1]
+		};
+
+		if (firefoxos) return {
+			firefoxos: t,
+			mobile: t,
+			name: 'firefoxos',
+			version: ua.match(/rv:(\d+\.\d+?)/i)[1]
 		};
 	}
 
