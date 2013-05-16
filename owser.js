@@ -172,6 +172,7 @@
 		if (android) return {
 			android: t,
 			mobile: t,
+			tablet: ua.indexOf('mobile') == -1 && ua.indexOf('Mobile') == -1,
 			name: 'android',
 			version: ua.match(/android (\d+\.\d+?)/i)[1]
 		};
