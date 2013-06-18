@@ -11,5 +11,4 @@ window.onload = function () {
 	oversion.innerHTML = oversion.innerHTML + owser.os.version;
 	browser.innerHTML = browser.innerHTML + owser.browser.name;
 	bversion.innerHTML = bversion.innerHTML + owser.browser.version;
-
 };

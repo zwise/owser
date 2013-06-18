@@ -23,6 +23,7 @@
 		* PhantomJS: "Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.5.0 Safari/534.34"
 		* Firefox OS: "Mozilla/5.0 (Mobile; rv:18.0) Gecko/18.0 Firefox/18.0"
 		* Windows Phone: "Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 920)"
+		* Blackberry: "Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+""
 		*/
 
 	var ua = navigator.userAgent,
@@ -33,6 +34,7 @@
 		chrome = /chrome/i.test(ua),
 		phantom = /phantom/i.test(ua),
 		safari = /safari/i.test(ua) && !chrome && !phantom,
+		blackberry = /blackberry/i.test(ua),
 		iphone = /iphone/i.test(ua),
 		ipad = /ipad/i.test(ua),
 		ipod = /ipad/i.test(ua),
@@ -55,24 +57,28 @@
 			name: 'ie',
 			version: ua.match(/msie (\d+(\.\d+)?);/i)[1]
 		};
+
 		if (chrome) return {
 			webkit: t,
 			chrome: t,
 			name: 'chrome',
 			version: ua.match(/chrome\/(\d+(\.\d+)?)/i)[1]
 		};
+
 		if (phantom) return {
 			webkit: t,
 			phantom: t,
 			name: 'phantomjs',
 			version: ua.match(/phantomjs\/(\d+(\.\d+)+)/i)[1]
 		};
+
 		if (touchpad) return {
 			webkit: t,
 			touchpad: t,
 			name: 'touchpad',
 			version : ua.match(/touchpad\/(\d+(\.\d+)?)/i)[1]
 		};
+
 		if (iphone || ipad || ipod) {
 			o = {
 				webkit: t,
@@ -89,6 +95,14 @@
 			}
 			return o;
 		}
+
+		if (blackberry) return {
+			webkit: t,
+			mobile: t,
+			name: 'blackberry stock',
+			version: ua.match(webkitVersion)[1]
+		};
+
 		if (android) return {
 			webkit: t,
 			android: t,
@@ -96,17 +110,20 @@
 			name: 'android stock',
 			version: ua.match(webkitVersion)[1]
 		};
+
 		if (safari) return {
 			webkit: t,
 			safari: t,
 			name: 'safari',
 			version: ua.match(webkitVersion)[1]
 		};
+
 		if (opera) return {
 			opera: t,
 			name: 'opera',
 			version: ua.match(webkitVersion)[1]
 		};
+
 		if (gecko) {
 			o = {
 				gecko: t,
@@ -120,6 +137,7 @@
 			}
 			return o;
 		}
+
 		if (seamonkey) return {
 			seamonkey: t,
 			name: 'seamonkey',
@@ -167,6 +185,13 @@
 			ios: t,
 			name: 'ios',
 			version: ua.match(/ os (\d+(\.|_)\d+)?/i)[1].replace('_', '.')
+		};
+
+		if (blackberry) return {
+			blackberry: t,
+			mobile: t,
+			name: 'blackberry',
+			version: ua.match(/version\/(\d+\.\d+?)/i)[1]
 		};
 
 		if (android) return {
