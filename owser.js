@@ -150,14 +150,14 @@
 		if (winphone) return {
 			winphone: t,
 			mobile: t,
-			name: "winphone",
+			name: 'winphone',
 			version: ua.match(/windows phone (\d+\.\d+)?/i)[1]
 		};
 
 		if (windows) {
 			o = {
 				windows: t,
-				name: "windows",
+				name: 'windows',
 				version: ua.match(/windows nt (\d+\.\d+)?/i)[1]
 			};
 
