@@ -8,7 +8,7 @@
   * Owser - a device detector for operating systems and browsers
   * Derived from Dustin Diaz's [Bowser](https://github.com/ded/bowser)
   * https://github.com/zwise/owser
-  * MIT License | (c) Zach Wise 2013
+  * MIT License | (c) Zach Wise 2016
   */
 !function (name, definition) {
   if (typeof define == 'function') define(definition);
@@ -30,11 +30,13 @@
     * Firefox OS: "Mozilla/5.0 (Mobile; rv:18.0) Gecko/18.0 Firefox/18.0"
     * Windows Phone: "Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 920)"
     * Blackberry: "Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+""
+    * Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
     */
 
   var ua = navigator.userAgent,
     t = true,
     ie = /msie/i.test(ua),
+    trident = /trident/i.test(ua),
     windows = /windows nt/i.test(ua),
     mac = /mac os x/i.test(ua),
     chrome = /chrome/i.test(ua),
@@ -59,10 +61,19 @@
 
   function detectBrowser() {
 
-    if (ie) return {
-      msie: t,
-      name: 'ie',
-      version: ua.match(/msie (\d+(\.\d+)?);/i)[1]
+    if (ie || trident) {
+      o = {
+        msie: t,
+        name: 'ie'
+      };
+
+      if (ie) {
+        o.version = ua.match(/msie (\d+(\.\d+)?);/i)[1];
+      } else {
+        o.version = ua.match(/rv:(\d+\.\d+?)/i)[1];
+      }
+
+      return o;
     };
 
     if (chrome) return {
@@ -129,8 +140,8 @@
         o.name = 'gecko';
         o.version = ua.match(/firefox\/(\d+(\.\d+)?)/i)[1];
         if (firefox) {
-        	o.firefox = t;
-        	o.name = 'firefox';
+          o.firefox = t;
+          o.name = 'firefox';
         }
         
       }
