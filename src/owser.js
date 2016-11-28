@@ -1,9 +1,3 @@
-/*!
-  * Owser - a device detector for operating systems and browsers
-  * Derived from Dustin Diaz's [Bowser](https://github.com/ded/bowser)
-  * https://github.com/zwise/owser
-  * MIT License | (c) Zach Wise 2016
-  */
 !function (name, definition) {
   if (typeof define == 'function') define(definition);
   else if (typeof module != 'undefined' && module.exports) module.exports['browser'] = definition();
